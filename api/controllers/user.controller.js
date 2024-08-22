@@ -7,7 +7,6 @@ export const test = (req, res) => {
 };
 
 export const updateUser= async (req, res, next) =>{
-    console.log(req.body);
     if(req.user.id!==req.params.userId){
         return next(errorHandler(403, 'You are not authorized to update this user'));
     }
@@ -36,7 +35,7 @@ export const updateUser= async (req, res, next) =>{
         }
     }
     try {
-        const  updatedUser = await User.findByIdAndUpdate(req.params.userId,  {
+        const updatedUser = await User.findByIdAndUpdate(req.params.userId,  {
             $set: {
               username: req.body.username,
               email: req.body.email,
@@ -50,4 +49,16 @@ export const updateUser= async (req, res, next) =>{
     } catch (error) {
         next(error);
     }
+}
+
+export const deleteUser= async (req, res, next)=>{
+  if(req.params.userId!==req.user.id){
+    return next(errorHandler(403, 'You are not authorized to delete this user'));
+  }
+  try {
+    await User.findByIdAndDelete(req.params.userId);
+    res.status(200).json('User has been deleted');
+  } catch (error) {
+    next(error);
+  }
 }
