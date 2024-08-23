@@ -7,6 +7,8 @@ export const test = (req, res) => {
 };
 
 export const updateUser= async (req, res, next) =>{
+    console.log(req.user.id);
+    console.log(req.params.userId);
     if(req.user.id!==req.params.userId){
         return next(errorHandler(403, 'You are not authorized to update this user'));
     }
@@ -57,6 +59,7 @@ export const deleteUser= async (req, res, next)=>{
   }
   try {
     await User.findByIdAndDelete(req.params.userId);
+    res.clearCookie('access_token', { httpOnly: true});
     res.status(200).json('User has been deleted');
   } catch (error) {
     next(error);

@@ -93,7 +93,7 @@ export const google= async (req, res, next)=>{
   
       const {password, ...rest}= newUser._doc;
 
-      return res.status(200).cookie('access-token', token, {
+      return res.status(200).cookie('access_token', token, {
         httpOnly: true
       }).json(rest);
     }
