@@ -57,15 +57,10 @@ const CreatePost = () => {
     }
   };
 
-  const handlesubmit= async (e)=>{
-    e.preventDefault();
-    console.log(formData);
-  }
-
   return (
     <div className="p-3 max-w-3xl min-h-screen mx-auto">
       <h1 className="text-center text-3xl my-7 font-semibold">Create Post</h1>
-      <form className="flex flex-col gap-4" onSubmit={handlesubmit}>
+      <form className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row justify-between">
           <TextInput
             type="text"
