@@ -1,6 +1,7 @@
 import { Alert, Button, Label, Modal, TextInput } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -22,10 +23,8 @@ import {
 } from "../redux/user/userSlice";
 
 const DashProfile = () => {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, isLoading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  // console.log(error)
-
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -224,9 +223,18 @@ const DashProfile = () => {
           placeholder="password"
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline>
+        <Button type="submit" gradientDuoTone="purpleToBlue" outline disabled={isLoading || imageFileUploading}>
           Update
         </Button>
+        {
+          currentUser && currentUser.isAdmin && (
+           <Link to={'/create-post'}>
+              <Button type="submit" gradientDuoTone="purpleToBlue" className="w-full" >
+                Create a post
+              </Button>
+           </Link>
+          )
+        }
       </form>
       <div className="flex justify-between mt-5">
         <span
