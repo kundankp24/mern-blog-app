@@ -7,35 +7,148 @@ body {
 }
 
 .ql-editor {
-  font-size: 1.05rem;
-}
-
-.post-content p {
-  margin-bottom: 0.5rem;
-}
-
-.post-content h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-family: sans-serif;
-  margin: 1.5rem 0;
-}
-
-.post-content h2 {
-  font-size: 1.4rem;
-  font-family: sans-serif;
-  margin: 1.5rem 0;
-}
-
-.post-content a {
-  color: rgb(73, 149, 199);
-  text-decoration: none;
-}
-
-.post-content a:hover {
-  text-decoration: underline;
-}
-
-.dark .post-content a {
-  color: red;
-}
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: #444;
+    line-height: 1.8;
+  }
+  
+  .post-content p {
+    margin-bottom: 0.75rem;
+  }
+  
+  .post-content h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 2rem 0;
+    color: #222;
+  }
+  
+  .post-content h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin: 1.75rem 0;
+    color: #333;
+  }
+  
+  .post-content h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 1.5rem 0;
+    color: #555;
+  }
+  
+  .post-content ul, .post-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+  
+  .post-content ul li, .post-content ol li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-content blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-left: 4px solid #ccc;
+    background-color: #f1f1f1;
+    font-style: italic;
+    color: #666;
+  }
+  
+  .post-content code {
+    background-color: #eee;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #c7254e;
+  }
+  
+  .post-content pre {
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .post-content a {
+    color: rgb(73, 149, 199);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .post-content a:hover {
+    text-decoration: underline;
+    color: rgb(30, 100, 150);
+  }
+  
+  .dark .post-content {
+    color: #ccc;
+    background-color: #222;
+  }
+  
+  .dark .post-content h1, 
+  .dark .post-content h2, 
+  .dark .post-content h3 {
+    color: #eee;
+  }
+  
+  .dark .post-content p, 
+  .dark .post-content li, 
+  .dark .post-content blockquote, 
+  .dark .post-content code {
+    color: #ddd;
+  }
+  
+  .dark .post-content blockquote {
+    border-left-color: #555;
+    background-color: #333;
+  }
+  
+  .dark .post-content pre {
+    background-color: #1e1e1e;
+  }
+  
+  .dark .post-content a {
+    color: #ff6b6b;
+  }
+  
+  .dark .post-content a:hover {
+    color: #ff4b4b;
+  }
+  
+  .dark .ql-toolbar {
+    color: #ffffff;
+  }
+  
+  .dark .ql-toolbar .ql-picker-label,
+  .dark .ql-toolbar .ql-picker-item {
+    color: #ffffff;
+  }
+  
+  .dark .ql-toolbar button,
+  .dark .ql-toolbar .ql-picker {
+    color: #ffffff;
+  }
+  
+  .dark .ql-toolbar button:hover,
+  .dark .ql-toolbar .ql-picker-label:hover,
+  .dark .ql-toolbar .ql-picker-item:hover {
+    color: #dddddd;
+  }
+  
