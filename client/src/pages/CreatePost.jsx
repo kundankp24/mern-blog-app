@@ -1,5 +1,6 @@
 import { Select, TextInput, FileInput, Alert, Button } from "flowbite-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { app } from "../firebase";
@@ -13,6 +14,8 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const CreatePost = () => {
+  const navigate= useNavigate();
+
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
@@ -57,10 +60,36 @@ const CreatePost = () => {
     }
   };
 
+  const handleSubmit= async (e)=>{
+    e.preventDefault();
+    try {
+      const res= await fetch('/api/post/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if(!res.ok){
+        setPublishError(data.message);
+        return;
+      }
+      else if(res.ok){
+        setPublishError(null);
+        setFormData({});
+        navigate(`/post/${data.slug}`)
+      }
+
+    } catch (error) {
+      setPublishError("Something went wrong");
+    }
+  }
+
   return (
     <div className="p-3 max-w-3xl min-h-screen mx-auto">
       <h1 className="text-center text-3xl my-7 font-semibold">Create Post</h1>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4 sm:flex-row justify-between">
           <TextInput
             type="text"
@@ -120,13 +149,18 @@ const CreatePost = () => {
           placeholder="Write something..."
           className="h-72 mb-12"
           onChange={(value) => {
-            setFormData({ ...formData, content: plainText });
+            setFormData({ ...formData, content: value });
           }}
           required
         />
         <Button type="submit" gradientDuoTone="purpleToPink">
           Publish
         </Button>
+        {publishError && (
+          <Alert className='mt-5' color='failure'>
+            {publishError}
+          </Alert>
+        )}
       </form>
     </div>
   );
