@@ -51,7 +51,7 @@ const DashSidebar = () => {
             </Sidebar.Item>
           </Link>
           {currentUser.isAdmin && (
-            <Link  to="/dashboard?tab=post">
+            <Link to="/dashboard?tab=post">
               <Sidebar.Item
                 active={tab === "post"}
                 icon={HiDocumentText}
