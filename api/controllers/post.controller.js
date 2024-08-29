@@ -95,7 +95,7 @@ export const updatepost = async (req, res, next)=>{
     }
     try {
         const updatedPost= await Post.findByIdAndUpdate(
-            {postId},
+            {_id: postId},
             {
                 $set: {
                     title: req.body.title,
@@ -108,6 +108,6 @@ export const updatepost = async (req, res, next)=>{
         );
         res.status(200).json(updatedPost);
     } catch (error) {
-        
+        next(error);
     }
 }
