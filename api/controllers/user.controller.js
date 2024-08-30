@@ -81,10 +81,10 @@ export const getUsers= async (req, res, next)=>{
       return next(errorHandler(403, 'You are not authorized to view this page'))
     }
     try {
-      const startIndex= parseInt(req.params.startIndex) || 0;
-      const limit= parseInt(req.params.limit) || 9;
-      const sortDirection= req.query.sort==='asc' ? 1 : -1;
-     
+      const startIndex= parseInt(req.query.startIndex) || 0;
+      const limit= parseInt(req.query.limit) || 9;
+      const sortDirection= req.query.order==='asc' ? 1 : -1;
+
       const users= await User.find().sort({createdAt: sortDirection}).skip(startIndex).limit(limit);
 
       const usersWIthoutPassword= users.map((user)=>{
