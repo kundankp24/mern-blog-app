@@ -148,6 +148,19 @@ const CreatePost = () => {
           theme="snow"
           placeholder="Write something..."
           className="h-72 mb-12"
+          modules={{
+            toolbar: [
+              [{ 'header': [1, 2, false] }],
+              ['bold', 'italic', 'underline', 'blockquote'],
+              [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+              ['link', 'code-block'],
+              ['clean']
+            ],
+          }}
+          formats={[
+            'header', 'bold', 'italic', 'underline', 'blockquote',
+            'list', 'bullet', 'link', 'code-block'
+          ]}
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}

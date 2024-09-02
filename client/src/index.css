@@ -39,3 +39,11 @@ body {
 .dark .post-content a {
   color: red;
 }
+/* Global styles or in your CSS file */
+.post-content pre {
+  @apply bg-gray-800 text-gray-200 rounded-md p-4 overflow-x-auto; /* Apply Tailwind styles */
+}
+
+.post-content code {
+  @apply text-yellow-300 font-mono; /* Code color and font */
+}
